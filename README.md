@@ -1,0 +1,1 @@
+This App is a clone of "Flat-UI" web application developed on react. 
