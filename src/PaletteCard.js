@@ -14,7 +14,11 @@ const styles={
        }
    },
    colors:{
-       backgroundColor:"grey"
+       backgroundColor:"#dae1e4",
+       height:"150px",
+       width:"100%",
+       borderRadius:"5px",
+       overflow:"hidden"
    },
    title:{
       display:"flex",
@@ -29,14 +33,29 @@ const styles={
    emoji:{
         marginLeft:"0.5rem",
         fontSize:"1.5rem"
+   },
+   miniColor:{
+     height:"25%",
+     width:"20%",
+     margin:"0 auto",
+     display:"inline-block",
+     position:"relative",
+     marginBottom:"-3.5px"
    }
 }
 
 function PaletteCard(props) {
-    const {classes,paletteName,emoji} = props;
+    const {classes,paletteName,emoji,colors} = props;
+    const miniColors = colors.map(color=>(
+        <div 
+          style={{backgroundColor:color.color}}
+          className={classes.miniColor} 
+          key={color.name}    
+        />
+    ));
     return (
         <div className={classes.root}>
-            <div className={classes.colors}></div>
+            <div className={classes.colors}>{miniColors}</div>
             <h5 className={classes.title}>
               {paletteName}
               <span className={classes.emoji}>{emoji}</span>
