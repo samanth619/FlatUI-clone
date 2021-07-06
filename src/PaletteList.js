@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 import PaletteCard from './PaletteCard';
 
@@ -34,6 +34,9 @@ const styles={
 }
 
 class PaletteList extends Component {
+    openPalette(id){
+        this.props.history.push(`/palette/${id}`);
+    }
     render() {
         const {palettes,classes} = this.props;
         return (
@@ -44,7 +47,7 @@ class PaletteList extends Component {
                    </nav>
                    <div className={classes.palettes}>
                        {palettes.map(palette=>(
-                          <PaletteCard {...palette} />
+                          <PaletteCard key={palette.id} {...palette} handleClick={()=> this.openPalette(palette.id)} />
                        ))}
                    </div>
                </div>

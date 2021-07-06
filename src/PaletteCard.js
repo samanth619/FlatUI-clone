@@ -45,7 +45,7 @@ const styles={
 }
 
 function PaletteCard(props) {
-    const {classes,paletteName,emoji,colors} = props;
+    const {classes,paletteName,emoji,colors,handleClick} = props;
     const miniColors = colors.map(color=>(
         <div 
           style={{backgroundColor:color.color}}
@@ -54,7 +54,7 @@ function PaletteCard(props) {
         />
     ));
     return (
-        <div className={classes.root}>
+        <div className={classes.root} onClick={handleClick}>
             <div className={classes.colors}>{miniColors}</div>
             <h5 className={classes.title}>
               {paletteName}
